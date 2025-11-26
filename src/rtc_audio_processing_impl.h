@@ -14,6 +14,7 @@ class RTCAudioProcessingImpl : public RTCAudioProcessing {
  public:
   RTCAudioProcessingImpl();
   ~RTCAudioProcessingImpl();
+  
   void SetCapturePostProcessing(
       RTCAudioProcessing::CustomProcessing* capture_post_processing) override;
 

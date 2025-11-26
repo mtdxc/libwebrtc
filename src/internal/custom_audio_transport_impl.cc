@@ -52,13 +52,12 @@ void CustomAudioTransportImpl::PullRenderData(
 void CustomAudioTransportImpl::UpdateAudioSenders(
     std::vector<AudioSender*> senders, int send_sample_rate_hz,
     size_t send_num_channels) {
+  std::vector<AudioSender*> snds = std::vector<AudioSender*>();
   if (senders.size() > 0) {
-    std::vector<AudioSender*> snds = std::vector<AudioSender*>();
     snds.push_back(this);
     audio_transport_impl_->UpdateAudioSenders(
         std::move(snds), send_sample_rate_hz, send_num_channels);
   } else {
-    std::vector<AudioSender*> snds = std::vector<AudioSender*>();
     audio_transport_impl_->UpdateAudioSenders(
         std::move(snds), send_sample_rate_hz, send_num_channels);
   }

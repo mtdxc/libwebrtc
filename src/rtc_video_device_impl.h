@@ -43,11 +43,10 @@ class RTCVideoDeviceImpl : public RTCVideoDevice {
  public:
   uint32_t NumberOfDevices() override;
 
-  int32_t GetDeviceName(uint32_t deviceNumber, char* deviceNameUTF8,
-                        uint32_t deviceNameLength, char* deviceUniqueIdUTF8,
-                        uint32_t deviceUniqueIdUTF8Length,
-                        char* productUniqueIdUTF8 = 0,
-                        uint32_t productUniqueIdUTF8Length = 0) override;
+  int32_t GetDeviceName(uint32_t deviceNumber, 
+    char* deviceNameUTF8, uint32_t deviceNameLength, 
+    char* deviceUniqueIdUTF8, uint32_t deviceUniqueIdUTF8Length,
+    char* productUniqueIdUTF8 = 0, uint32_t productUniqueIdUTF8Length = 0) override;
 
   scoped_refptr<RTCVideoCapturer> Create(const char* name, uint32_t index,
                                          size_t width, size_t height,

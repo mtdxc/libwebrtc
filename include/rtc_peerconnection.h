@@ -118,8 +118,7 @@ class MediaRTCStats : public RefCountInterface {
   virtual const vector<scoped_refptr<RTCStatsMember>> Members() = 0;
 };
 
-typedef fixed_size_function<void(
-    const vector<scoped_refptr<MediaRTCStats>> reports)>
+typedef fixed_size_function<void(const vector<scoped_refptr<MediaRTCStats>> reports)>
     OnStatsCollectorSuccess;
 
 typedef fixed_size_function<void(const char* error)> OnStatsCollectorFailure;
@@ -127,7 +126,7 @@ typedef fixed_size_function<void(const char* error)> OnStatsCollectorFailure;
 typedef fixed_size_function<void(const string sdp, const string type)>
     OnSdpCreateSuccess;
 
-typedef fixed_size_function<void(const char* erro)> OnSdpCreateFailure;
+typedef fixed_size_function<void(const char* error)> OnSdpCreateFailure;
 
 typedef fixed_size_function<void()> OnSetSdpSuccess;
 

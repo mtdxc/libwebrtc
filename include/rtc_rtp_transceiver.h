@@ -22,10 +22,8 @@ class RTCRtpTransceiverInit : public RefCountInterface {
   virtual const vector<string> stream_ids() = 0;
   virtual void set_stream_ids(const vector<string> ids) = 0;
 
-  virtual const vector<scoped_refptr<RTCRtpEncodingParameters>>
-  send_encodings() = 0;
-  virtual void set_send_encodings(
-      const vector<scoped_refptr<RTCRtpEncodingParameters>> send_encodings) = 0;
+  virtual const vector<scoped_refptr<RTCRtpEncodingParameters>> send_encodings() = 0;
+  virtual void set_send_encodings(const vector<scoped_refptr<RTCRtpEncodingParameters>> send_encodings) = 0;
 };
 
 class RTCRtpTransceiver : public RefCountInterface {

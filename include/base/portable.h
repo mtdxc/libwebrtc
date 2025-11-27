@@ -54,12 +54,12 @@ class string {
   inline string(const std::string& str) { init(str.c_str(), str.length()); }
 
   inline string(const string& o) {
-    init(o.m_dynamic == 0 ? o.m_buf : o.m_dynamic, o.m_length);
+    init(o.c_string(), o.m_length);
   }
 
   inline string& operator=(const string& o) {
     destroy();
-    init(o.m_dynamic == 0 ? o.m_buf : o.m_dynamic, o.m_length);
+    init(o.c_string(), o.m_length);
     return *this;
   }
 
@@ -78,7 +78,7 @@ class string {
   }
 
   inline std::string std_string() const {
-    return std::string(m_dynamic == 0 ? m_buf : m_dynamic, m_length);
+    return std::string(c_string(), m_length);
   }
 };
 

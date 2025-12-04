@@ -46,6 +46,7 @@ class string {
 
  public:
   LIB_PORTABLE_API string();
+  LIB_PORTABLE_API ~string();
   LIB_PORTABLE_API void init(const char* str, size_t len);
   LIB_PORTABLE_API void destroy();
 
@@ -62,8 +63,6 @@ class string {
     init(o.c_string(), o.m_length);
     return *this;
   }
-
-  LIB_PORTABLE_API ~string();
 
   inline string& operator=(const std::string& str) {
     destroy();
@@ -118,8 +117,7 @@ class vector {
     } else {
       m_array = new T[v.size()];
       size_t i = 0;
-      for (typename Iterable::const_iterator it = v.begin(); it != v.end();
-           ++it) {
+      for (typename Iterable::const_iterator it = v.begin(); it != v.end(); ++it) {
         m_array[i++] = *it;
       }
     }
@@ -133,8 +131,7 @@ class vector {
     } else {
       m_array = new T[v.size()];
       size_t i = 0;
-      for (typename Iterable::const_iterator it = v.begin(); it != v.end();
-           ++it) {
+      for (typename Iterable::const_iterator it = v.begin(); it != v.end(); ++it) {
         m_array[i++] = convert(*it);
       }
     }

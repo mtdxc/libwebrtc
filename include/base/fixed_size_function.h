@@ -68,12 +68,10 @@ class fixed_size_function<Ret(Args...), MaxSize, ConstructStrategy> {
 
   using is_copyable =
       std::integral_constant<bool, ConstructStrategy == construct_type::copy ||
-                                       ConstructStrategy ==
-                                           construct_type::copy_and_move>;
+                                   ConstructStrategy == construct_type::copy_and_move>;
   using is_movable =
       std::integral_constant<bool, ConstructStrategy == construct_type::move ||
-                                       ConstructStrategy ==
-                                           construct_type::copy_and_move>;
+                                   ConstructStrategy == construct_type::copy_and_move>;
 
   using result_type = Ret;
 
@@ -92,12 +90,14 @@ class fixed_size_function<Ret(Args...), MaxSize, ConstructStrategy> {
   fixed_size_function(fixed_size_function<F, S, C>&) = delete;
   template <typename F, size_t S, construct_type C>
   fixed_size_function(fixed_size_function<F, S, C>&&) = delete;
+
   template <typename F, size_t S, construct_type C>
   fixed_size_function& operator=(fixed_size_function<F, S, C> const&) = delete;
   template <typename F, size_t S, construct_type C>
   fixed_size_function& operator=(fixed_size_function<F, S, C>&) = delete;
   template <typename F, size_t S, construct_type C>
   fixed_size_function& operator=(fixed_size_function<F, S, C>&&) = delete;
+
   template <typename F, size_t S, construct_type C>
   void assign(fixed_size_function<F, S, C> const&) = delete;
   template <typename F, size_t S, construct_type C>
@@ -106,10 +106,8 @@ class fixed_size_function<Ret(Args...), MaxSize, ConstructStrategy> {
   void assign(fixed_size_function<F, S, C>&&) = delete;
 
   fixed_size_function() {}
-
-  ~fixed_size_function() { reset(); }
-
   fixed_size_function(std::nullptr_t) {}
+  ~fixed_size_function() { reset(); }
 
   fixed_size_function& operator=(std::nullptr_t) {
     reset();
@@ -284,8 +282,7 @@ class fixed_size_function<Ret(Args...), MaxSize, ConstructStrategy> {
   void init_move(std::false_type /*movable*/) {}
 
  private:
-  using vtable =
-      details::fixed_function_vtable<ConstructStrategy, Ret, Args...>;
+  using vtable = details::fixed_function_vtable<ConstructStrategy, Ret, Args...>;
   static const size_t StorageSize = MaxSize - sizeof(vtable);
   using storage = typename std::aligned_storage<StorageSize>::type;
 

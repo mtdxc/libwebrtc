@@ -13,10 +13,10 @@ class MediaSource : public RefCountInterface {
   // source name
   virtual string name() const = 0;
 
+  virtual DesktopType type() const = 0;
+  
   // Returns the thumbnail of the source, jpeg format.
   virtual portable::vector<unsigned char> thumbnail() const = 0;
-
-  virtual DesktopType type() const = 0;
 
   virtual bool UpdateThumbnail() = 0;
 

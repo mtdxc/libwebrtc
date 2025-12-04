@@ -39,6 +39,6 @@ void string::destroy() {
 }
 
 string::~string() {
-  if (m_dynamic != 0) delete[] m_dynamic;
+  destory();
 }
 }  // namespace portable

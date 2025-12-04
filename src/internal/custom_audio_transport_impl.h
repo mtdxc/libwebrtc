@@ -69,14 +69,13 @@ class CustomAudioTransportFactory : public AudioTransportFactory {
  public:
   CustomAudioTransportFactory() = default;
   ~CustomAudioTransportFactory() = default;
+
   std::unique_ptr<AudioTransport> Create(
       webrtc::AudioMixer* mixer, webrtc::AudioProcessing* audio_processing,
       webrtc::AsyncAudioProcessing::Factory* async_audio_processing_factory)
       override {
-    std::unique_ptr<CustomAudioTransportImpl> transport =
-        std::make_unique<CustomAudioTransportImpl>(
+    auto transport = std::make_unique<CustomAudioTransportImpl>(
             mixer, audio_processing, async_audio_processing_factory);
-
     audio_transport_impl_ = transport.get();
     return transport;
   }
